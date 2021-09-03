@@ -1,0 +1,195 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://crosshair.png" type="Texture" id=1]
+[ext_resource path="res://damageoverlaydownres.png" type="Texture" id=2]
+[ext_resource path="res://PS1-shaders-for-godot-main/psx.shader" type="Shader" id=3]
+[ext_resource path="res://TexturesCom_Various0217_1_S.jpg" type="Texture" id=4]
+[ext_resource path="res://Main character controller.gd" type="Script" id=5]
+[ext_resource path="res://shotgun.obj" type="ArrayMesh" id=6]
+
+[sub_resource type="CapsuleMesh" id=161]
+mid_height = 3.0
+
+[sub_resource type="CapsuleShape" id=162]
+height = 3.0
+
+[sub_resource type="CylinderShape" id=163]
+
+[sub_resource type="ProceduralSky" id=160]
+
+[sub_resource type="Environment" id=164]
+background_mode = 2
+background_sky = SubResource( 160 )
+ambient_light_color = Color( 0.819608, 0.760784, 0.486275, 1 )
+ambient_light_energy = 0.57
+fog_enabled = true
+fog_color = Color( 0.843137, 0.678431, 0.466667, 1 )
+fog_depth_begin = 50.0
+fog_depth_end = 437.2
+glow_intensity = 0.76
+
+[sub_resource type="Animation" id=165]
+resource_name = "Pain"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Blood:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="ShaderMaterial" id=166]
+shader = ExtResource( 3 )
+shader_param/snapRes = 200.0
+shader_param/roughness = 1.0
+shader_param/specular = 0.1
+shader_param/uv_scale = Vector2( 1, 1 )
+shader_param/uv_offset = Vector2( 0, 0 )
+shader_param/light_intensity = 0.3
+shader_param/transparent = false
+shader_param/albedoTex = ExtResource( 4 )
+
+[sub_resource type="Animation" id=167]
+resource_name = "Headbob"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head/Headbob:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.05, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=168]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head/Headbob:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[node name="PlayerInstance" type="Spatial"]
+
+[node name="Main character controller" type="KinematicBody" parent="." groups=[
+"Player",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65588, 11.005, 74.0453 )
+script = ExtResource( 5 )
+
+[node name="GroundCheck" type="RayCast" parent="Main character controller"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.64896, 0 )
+enabled = true
+cast_to = Vector3( 0, -1.5, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Main character controller"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 161 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Main character controller"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 162 )
+
+[node name="Foot" type="CollisionShape" parent="Main character controller"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.53252, 0 )
+shape = SubResource( 163 )
+
+[node name="Head" type="Spatial" parent="Main character controller"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59493, 0 )
+
+[node name="Headbob" type="Spatial" parent="Main character controller/Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0333333, 0 )
+
+[node name="Camera" type="Camera" parent="Main character controller/Head/Headbob"]
+environment = SubResource( 164 )
+near = 0.01
+far = 455.5
+
+[node name="RayContainer" type="Spatial" parent="Main character controller/Head/Headbob/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.203034, 0 )
+
+[node name="RayCast" type="RayCast" parent="Main character controller/Head/Headbob/Camera/RayContainer"]
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+
+[node name="RayCast2" type="RayCast" parent="Main character controller/Head/Headbob/Camera/RayContainer"]
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+
+[node name="RayCast3" type="RayCast" parent="Main character controller/Head/Headbob/Camera/RayContainer"]
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+
+[node name="RayCast4" type="RayCast" parent="Main character controller/Head/Headbob/Camera/RayContainer"]
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+
+[node name="RayCast5" type="RayCast" parent="Main character controller/Head/Headbob/Camera/RayContainer"]
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+
+[node name="RayCast6" type="RayCast" parent="Main character controller/Head/Headbob/Camera/RayContainer"]
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+
+[node name="RayCast7" type="RayCast" parent="Main character controller/Head/Headbob/Camera/RayContainer"]
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+
+[node name="Blood" type="TextureRect" parent="Main character controller/Head/Headbob/Camera"]
+process_priority = 1
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CrossHair" type="TextureRect" parent="Main character controller/Head/Headbob/Camera"]
+margin_left = 118.0
+margin_top = 102.0
+margin_right = 158.0
+margin_bottom = 142.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main character controller/Head/Headbob/Camera"]
+anims/Pain = SubResource( 165 )
+
+[node name="Hands" type="Spatial" parent="Main character controller/Head"]
+
+[node name="MeshInstance2" type="MeshInstance" parent="Main character controller/Head/Hands"]
+transform = Transform( -0.0467814, -0.01826, 0.698196, -0.254526, 0.652086, 0, -0.650406, -0.25387, -0.0502188, 0.457478, -0.779881, -1.13662 )
+mesh = ExtResource( 6 )
+material/0 = SubResource( 166 )
+
+[node name="HandLoc" type="Spatial" parent="Main character controller/Head"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main character controller"]
+anims/Headbob = SubResource( 167 )
+anims/Idle = SubResource( 168 )

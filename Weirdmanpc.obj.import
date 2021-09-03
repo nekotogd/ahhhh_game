@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Weirdmanpc.obj-67d3dfa1fa71fe3f8b29b1f79331a2af.mesh"
+
+[deps]
+
+files=[ "res://.import/Weirdmanpc.obj-67d3dfa1fa71fe3f8b29b1f79331a2af.mesh" ]
+
+source_file="res://Weirdmanpc.obj"
+dest_files=[ "res://.import/Weirdmanpc.obj-67d3dfa1fa71fe3f8b29b1f79331a2af.mesh", "res://.import/Weirdmanpc.obj-67d3dfa1fa71fe3f8b29b1f79331a2af.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

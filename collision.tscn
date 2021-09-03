@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://enviroemnt.obj" type="ArrayMesh" id=1]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="enviroemnt" type="RigidBody" parent="."]
+transform = Transform( 19.76, 0, 0, 0, 19.76, 0, 0, 0, 19.76, -2.331, -2.372, -2.839 )
+mode = 1
+
+[node name="enviroemnt" type="MeshInstance" parent="enviroemnt"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3014, -1.93027, -1.71634 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
