@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Pain.tres" type="Animation" id=1]
 [ext_resource path="res://Idle.tres" type="Animation" id=2]
-[ext_resource path="res://Main character controller.gd" type="Script" id=3]
+[ext_resource path="res://Player/Main character controller.gd" type="Script" id=3]
 [ext_resource path="res://PS1-shaders-for-godot-main/psx.shader" type="Shader" id=4]
 [ext_resource path="res://crosshair.png" type="Texture" id=5]
 [ext_resource path="res://damageoverlaydownres.png" type="Texture" id=6]
@@ -41,12 +41,11 @@ shader_param/light_intensity = 0.3
 shader_param/transparent = false
 shader_param/albedoTex = ExtResource( 7 )
 
-[sub_resource type="CylinderShape" id=8]
+[sub_resource type="CylinderShape" id=7]
 radius = 3.0
 height = 87.0
 
-[sub_resource type="Animation" id=7]
-resource_name = "Headbob"
+[sub_resource type="Animation" id=8]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Head/Headbob:translation")
@@ -64,7 +63,6 @@ tracks/0/keys = {
 [node name="Main character controller" type="KinematicBody" groups=[
 "Player",
 ]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65588, 11.005, 74.0453 )
 script = ExtResource( 3 )
 
 [node name="GroundCheck" type="RayCast" parent="."]
@@ -168,12 +166,12 @@ transform = Transform( -0.0954723, -0.519441, -1.32736, -0.0372653, 1.33079, -0.
 
 [node name="CollisionShape" type="CollisionShape" parent="Head/Hands/MeshInstance2/ShotgunHitbox"]
 transform = Transform( 1, -5.29396e-23, 1.24345e-14, 0, -4.37114e-08, 0.999999, 0, -1, -4.37114e-08, 0, -6.67572e-06, -42.4606 )
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [node name="HandLoc" type="Spatial" parent="Head"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Headbob = SubResource( 7 )
+anims/Headbob = SubResource( 8 )
 anims/Idle = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]

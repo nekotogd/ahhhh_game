@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/TestEnemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://PS1-shaders-for-godot-main/psx.shader" type="Shader" id=2]
 [ext_resource path="res://WispySmoke03b_8x8.tga" type="Texture" id=3]
 [ext_resource path="res://Untitled-1.png" type="Texture" id=4]
@@ -971,7 +971,7 @@ color_ramp = SubResource( 12 )
 
 [sub_resource type="QuadMesh" id=14]
 
-[sub_resource type="Shader" id=16]
+[sub_resource type="Shader" id=15]
 code = "shader_type spatial;
 render_mode unshaded;
 
@@ -1000,22 +1000,22 @@ void fragment(){
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id=17]
+[sub_resource type="ShaderMaterial" id=16]
 resource_local_to_scene = true
-shader = SubResource( 16 )
+shader = SubResource( 15 )
 shader_param/progress_color = Color( 0.831373, 0.8, 0, 1 )
 shader_param/background_color = Color( 0.227451, 0.227451, 0.227451, 0.694118 )
 shader_param/lerp_color = Color( 1, 0.0941176, 0.0941176, 1 )
 shader_param/progress = 0.3
 shader_param/lerp_progress = 0.4
 
-[sub_resource type="QuadMesh" id=15]
+[sub_resource type="QuadMesh" id=17]
 size = Vector2( 5, 0.2 )
 
 [node name="TestEnemy" type="KinematicBody" groups=[
 "Enemy",
 ]]
-transform = Transform( 0.891481, 0, -0.453057, 0, 1, 0, 0.453057, 0, 0.891481, 0, 7.14055, -13.1053 )
+transform = Transform( 0.891481, 0, -0.453057, 0, 1, 0, 0.453057, 0, 0.891481, 0, 0, 0 )
 script = ExtResource( 1 )
 
 [node name="ShootTimer" type="Timer" parent="."]
@@ -1236,8 +1236,8 @@ draw_pass_1 = SubResource( 14 )
 
 [node name="Healthbar" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7451, 0 )
-material_override = SubResource( 17 )
-mesh = SubResource( 15 )
+material_override = SubResource( 16 )
+mesh = SubResource( 17 )
 material/0 = null
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
