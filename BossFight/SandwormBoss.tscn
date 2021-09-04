@@ -1,0 +1,129 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://BossFight/BossModel/SandWormModel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://BossFight/SandwormBoss.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.28118, 0.491388, 0.225153 )
+
+[sub_resource type="Animation" id=2]
+
+[node name="SandwormBoss" type="KinematicBody" groups=[
+"Enemy",
+]]
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="CollisionBone1" type="CollisionShape" parent="."]
+transform = Transform( 1.14863e-14, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, 2.11758e-20, 2.62775e-07, -6.0116, -2.62775e-07, 0, 0, 30.028 )
+shape = SubResource( 1 )
+
+[node name="CollisionBone2" type="CollisionShape" parent="."]
+transform = Transform( 1.14863e-14, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, 2.11758e-20, 2.62775e-07, -6.0116, -2.62775e-07, -2.09931e-07, -2.09931e-07, 25.2253 )
+shape = SubResource( 1 )
+
+[node name="CollisionBone3" type="CollisionShape" parent="."]
+transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -3.68181e-07, -3.68181e-07, 21.605 )
+shape = SubResource( 1 )
+
+[node name="CollisionBone4" type="CollisionShape" parent="."]
+transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -5.36071e-07, -5.36071e-07, 17.7641 )
+shape = SubResource( 1 )
+
+[node name="CollisionBone5" type="CollisionShape" parent="."]
+transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -6.9618e-07, -6.9618e-07, 14.1013 )
+shape = SubResource( 1 )
+
+[node name="CollisionBone6" type="CollisionShape" parent="."]
+transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -8.65515e-07, -8.65515e-07, 10.2273 )
+shape = SubResource( 1 )
+
+[node name="CollisionBone7" type="CollisionShape" parent="."]
+transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -9.79742e-07, -9.79742e-07, 7.61411 )
+shape = SubResource( 1 )
+
+[node name="CollisionBone8" type="CollisionShape" parent="."]
+transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -1.22937e-06, -1.22937e-06, 1.90336 )
+shape = SubResource( 1 )
+
+[node name="SandWormModel" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 30.028 )
+
+[node name="Armature" parent="SandWormModel" index="0"]
+transform = Transform( 6.0116, 0, 0, 0, 6.0116, 0, 0, 0, 6.0116, 0, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SandWormModel/Armature/Skeleton" index="1"]
+anims/UndergroundSwim = SubResource( 2 )
+
+[node name="BoneAttachement" type="BoneAttachment" parent="SandWormModel/Armature/Skeleton" index="2"]
+bone_name = "Bone"
+
+[node name="RemoteTransform" type="RemoteTransform" parent="SandWormModel/Armature/Skeleton/BoneAttachement"]
+remote_path = NodePath("../../../../../CollisionBone1")
+update_scale = false
+
+[node name="BoneAttachment2" type="BoneAttachment" parent="SandWormModel/Armature/Skeleton" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7989, 0 )
+bone_name = "Bone.001"
+
+[node name="RemoteTransform" type="RemoteTransform" parent="SandWormModel/Armature/Skeleton/BoneAttachment2"]
+remote_path = NodePath("../../../../../CollisionBone2")
+update_scale = false
+
+[node name="BoneAttachment3" type="BoneAttachment" parent="SandWormModel/Armature/Skeleton" index="4"]
+transform = Transform( 1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 1.40112, 0 )
+bone_name = "Bone.002"
+
+[node name="RemoteTransform" type="RemoteTransform" parent="SandWormModel/Armature/Skeleton/BoneAttachment3"]
+remote_path = NodePath("../../../../../CollisionBone3")
+update_scale = false
+
+[node name="BoneAttachment4" type="BoneAttachment" parent="SandWormModel/Armature/Skeleton" index="5"]
+transform = Transform( 1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 2.04003, 0 )
+bone_name = "Bone.003"
+
+[node name="RemoteTransform" type="RemoteTransform" parent="SandWormModel/Armature/Skeleton/BoneAttachment4"]
+remote_path = NodePath("../../../../../CollisionBone4")
+update_scale = false
+
+[node name="BoneAttachment5" type="BoneAttachment" parent="SandWormModel/Armature/Skeleton" index="6"]
+transform = Transform( 1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 2.64933, 0 )
+bone_name = "Bone.004"
+
+[node name="RemoteTransform" type="RemoteTransform" parent="SandWormModel/Armature/Skeleton/BoneAttachment5"]
+remote_path = NodePath("../../../../../CollisionBone5")
+update_scale = false
+
+[node name="BoneAttachment6" type="BoneAttachment" parent="SandWormModel/Armature/Skeleton" index="7"]
+transform = Transform( 1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 3.29374, 0 )
+bone_name = "Bone.005"
+
+[node name="RemoteTransform" type="RemoteTransform" parent="SandWormModel/Armature/Skeleton/BoneAttachment6"]
+remote_path = NodePath("../../../../../CollisionBone6")
+update_scale = false
+
+[node name="BoneAttachment7" type="BoneAttachment" parent="SandWormModel/Armature/Skeleton" index="8"]
+transform = Transform( 1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 3.72844, 0 )
+bone_name = "Bone.006"
+
+[node name="RemoteTransform" type="RemoteTransform" parent="SandWormModel/Armature/Skeleton/BoneAttachment7"]
+remote_path = NodePath("../../../../../CollisionBone7")
+update_scale = false
+
+[node name="BoneAttachment8" type="BoneAttachment" parent="SandWormModel/Armature/Skeleton" index="9"]
+transform = Transform( 1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 4.21142, 0 )
+bone_name = "Bone.007"
+
+[node name="RemoteTransform" type="RemoteTransform" parent="SandWormModel/Armature/Skeleton/BoneAttachment8"]
+remote_path = NodePath("../../../../../CollisionBone7")
+update_scale = false
+
+[node name="BoneAttachment" type="BoneAttachment" parent="SandWormModel/Armature/Skeleton" index="10"]
+transform = Transform( 1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 4.6784, 0 )
+bone_name = "Bone.008"
+
+[node name="RemoteTransform" type="RemoteTransform" parent="SandWormModel/Armature/Skeleton/BoneAttachment"]
+remote_path = NodePath("../../../../../CollisionBone8")
+update_scale = false
+
+[editable path="SandWormModel"]

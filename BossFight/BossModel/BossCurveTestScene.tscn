@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://BossFight/SandwormBoss.tscn" type="PackedScene" id=1]
+[ext_resource path="res://BossFight/JumpPath.tscn" type="PackedScene" id=2]
+
+[sub_resource type="ProceduralSky" id=1]
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_sky_contribution = 0.0
+tonemap_mode = 2
+
+[sub_resource type="Curve3D" id=3]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0, -15.4244, 68.5237, 0, 0, 0, 0, 0, 0, 0, -5.34961, 63.1505, 0, 0, 0, 0, 0, 0, 0, 4.55723, 56.9377, 0, 0, 0, 0, 0, 0, 0, 14.2961, 48.71, 0, 0, 0, 0, 0, 0, 0, 20.8447, 41.8256, 0, 0, 0, 0, 0, 0, 0, 28.9045, 31.7509, 0, 0, 0, 0, 0, 0, 0, 32.4307, 19.6612, 0, 0, 0, 0, 0, 0, 0, 33.774, 8.91477, 0, 0, 0, 0, 0, 0, 0, 32.0949, -0.65624, 0, 0, 0, 0, 0, 0, 0, 27.2254, -11.5706, 0, 0, 0, 0, 0, 0, 0, 21.0126, -19.7983, 0, 0, 0, 0, 0, 0, 0, 13.6245, -29.7051, 0, 0, 0, 0, 0, 0, 0, 3.54975, -39.9478, 0, 0, 0, 0, 0, 0, 0, -7.19665, -47.168, 0, 0, 0, 0, 0, 0, 0, -19.7901, -51.8696 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="BossCurveTestScene" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner"]
+visible = false
+width = 77.3137
+depth = 76.1419
+
+[node name="CSGBox2" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -44.9415 )
+visible = false
+width = 50.5038
+height = 65.6396
+depth = 17.3966
+
+[node name="CSGBox3" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7696, 0, 0 )
+height = 82.6072
+depth = 136.702
+
+[node name="SandwormBoss" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.6392, 40.8867 )
+
+[node name="Path" parent="SandwormBoss" instance=ExtResource( 2 )]
+curve = SubResource( 3 )
+OFFSET_LENGTH = 3.0
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.826079, 0.563555, 0, -0.563555, 0.826079, 0, 18.268, 0 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -0.104534, -0.850678, 0.515189, 0, 0.518027, 0.855364, -0.994521, 0.0894147, -0.0541515, 98.3901, 196.472, -25.5321 )
+current = true
+far = 8192.0

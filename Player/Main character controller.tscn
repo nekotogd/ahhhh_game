@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Pain.tres" type="Animation" id=1]
 [ext_resource path="res://Idle.tres" type="Animation" id=2]
@@ -9,19 +9,19 @@
 [ext_resource path="res://TexturesCom_Various0217_1_S.jpg" type="Texture" id=7]
 [ext_resource path="res://shotgun.obj" type="ArrayMesh" id=8]
 
-[sub_resource type="CapsuleMesh" id=5]
+[sub_resource type="CapsuleMesh" id=1]
 mid_height = 3.0
 
-[sub_resource type="CapsuleShape" id=6]
+[sub_resource type="CapsuleShape" id=2]
 height = 3.0
 
-[sub_resource type="CylinderShape" id=7]
+[sub_resource type="CylinderShape" id=3]
 
-[sub_resource type="ProceduralSky" id=8]
+[sub_resource type="ProceduralSky" id=4]
 
-[sub_resource type="Environment" id=9]
+[sub_resource type="Environment" id=5]
 background_mode = 2
-background_sky = SubResource( 8 )
+background_sky = SubResource( 4 )
 ambient_light_color = Color( 0.819608, 0.760784, 0.486275, 1 )
 ambient_light_energy = 0.57
 fog_enabled = true
@@ -30,7 +30,7 @@ fog_depth_begin = 50.0
 fog_depth_end = 437.2
 glow_intensity = 0.76
 
-[sub_resource type="ShaderMaterial" id=10]
+[sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 4 )
 shader_param/snapRes = 200.0
 shader_param/roughness = 1.0
@@ -41,7 +41,11 @@ shader_param/light_intensity = 0.3
 shader_param/transparent = false
 shader_param/albedoTex = ExtResource( 7 )
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="CylinderShape" id=8]
+radius = 3.0
+height = 87.0
+
+[sub_resource type="Animation" id=7]
 resource_name = "Headbob"
 length = 0.6
 tracks/0/type = "value"
@@ -70,16 +74,18 @@ cast_to = Vector3( 0, -1.5, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-mesh = SubResource( 5 )
+mesh = SubResource( 1 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 6 )
+visible = false
+shape = SubResource( 2 )
 
 [node name="Foot" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.53252, 0 )
-shape = SubResource( 7 )
+visible = false
+shape = SubResource( 3 )
 
 [node name="Head" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59493, 0 )
@@ -88,12 +94,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59493, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0333333, 0 )
 
 [node name="Camera" type="Camera" parent="Head/Headbob"]
-environment = SubResource( 9 )
+environment = SubResource( 5 )
 near = 0.01
 far = 455.5
 
 [node name="RayContainer" type="Spatial" parent="Head/Headbob/Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.203034, 0 )
+visible = false
 
 [node name="RayCast" type="RayCast" parent="Head/Headbob/Camera/RayContainer"]
 enabled = true
@@ -154,12 +161,19 @@ anims/Pain = ExtResource( 1 )
 [node name="MeshInstance2" type="MeshInstance" parent="Head/Hands"]
 transform = Transform( -0.0467814, -0.01826, 0.698196, -0.254526, 0.652086, 0, -0.650406, -0.25387, -0.0502188, 0.457478, -0.779881, -1.13662 )
 mesh = ExtResource( 8 )
-material/0 = SubResource( 10 )
+material/0 = SubResource( 6 )
+
+[node name="ShotgunHitbox" type="Area" parent="Head/Hands/MeshInstance2"]
+transform = Transform( -0.0954723, -0.519441, -1.32736, -0.0372653, 1.33079, -0.518103, 1.42489, 6.32262e-08, -0.102487, 1.27843, 1.32335, 0.0167704 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Head/Hands/MeshInstance2/ShotgunHitbox"]
+transform = Transform( 1, -5.29396e-23, 1.24345e-14, 0, -4.37114e-08, 0.999999, 0, -1, -4.37114e-08, 0, -6.67572e-06, -42.4606 )
+shape = SubResource( 8 )
 
 [node name="HandLoc" type="Spatial" parent="Head"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Headbob = SubResource( 11 )
+anims/Headbob = SubResource( 7 )
 anims/Idle = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]

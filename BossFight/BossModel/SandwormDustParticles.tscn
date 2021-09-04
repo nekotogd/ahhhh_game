@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://WispySmoke03b_8x8.tga" type="Texture" id=1]
+[ext_resource path="res://BossFight/BossModel/SandwormDustParticles.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = true
+albedo_color = Color( 0.960784, 0.886275, 0.533333, 1 )
+albedo_texture = ExtResource( 1 )
+emission_enabled = true
+emission = Color( 0.917647, 0.843137, 0.580392, 1 )
+emission_energy = 1.64
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0.881818 ), 0.0, 1.48417, 0, 0, Vector2( 1, 0.409091 ), 0.0502479, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 3.0
+spread = 180.0
+gravity = Vector3( 0, -1, 0 )
+initial_velocity = 2.0
+scale = 11.85
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 7 )
+
+[sub_resource type="QuadMesh" id=2]
+
+[node name="SandwormDustParticles" type="Particles"]
+material_override = SubResource( 1 )
+cast_shadow = 0
+emitting = false
+one_shot = true
+speed_scale = 0.2
+explosiveness = 0.87
+local_coords = false
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 2 )
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
