@@ -3,9 +3,10 @@
 [ext_resource path="res://BossFight/JumpPath.gd" type="Script" id=1]
 
 [sub_resource type="Curve3D" id=1]
+resource_local_to_scene = true
 _data = {
-"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0, -16.2788, 67.5109, 0, 0, 0, 0, 0, 0, 0, -3.19629, 60.3525, 0, 0, 0, 0, 0, 0, 0, 8.8989, 52.9473, 0, 0, 0, 0, 0, 0, 0, 20.7472, 44.6781, 0, 0, 0, 0, 0, 0, 0, 30.4974, 35.1748, 0, 0, 0, 0, 0, 0, 0, 35.1874, 23.6967, 0, 0, 0, 0, 0, 0, 0, 37.0387, 13.0826, 0, 0, 0, 0, 0, 0, 0, 38.1495, -0.370262, 0, 0, 0, 0, 0, 0, 0, 36.545, -13.6997, 0, 0, 0, 0, 0, 0, 0, 32.8424, -23.0796, 0, 0, 0, 0, 0, 0, 0, 26.6714, -30.7317, 0, 0, 0, 0, 0, 0, 0, 18.8959, -39.6179, 0, 0, 0, 0, 0, 0, 0, 10.2565, -47.0231, 0, 0, 0, 0, 0, 0, 0, 1.12342, -53.441, 0, 0, 0, 0, 0, 0, 0, -9.73756, -59.9823, 0, 0, 0, 0, 0, 0, 0, -16.2788, -63.6849 ),
-"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0, 0.423253, -9.09495e-13, 0, 0, 0, 0, 0, 0, 0, 4.0209, -1.16395, 0, 0, 0, 0, 0, 0, 0, 8.88829, -3.17439, 0, 0, 0, 0, 0, 0, 0, 13.3324, -6.03134, 0, 0, 0, 0, 0, 0, 0, 17.3533, -9.31155, 0, 0, 0, 0, 0, 0, 0, 20.2103, -12.2743, 0, 0, 0, 0, 0, 0, 0, 22.4324, -16.0836, 0, 0, 0, 0, 0, 0, 0, 24.337, -19.4696, 0, 0, 0, 0, 0, 0, 0, 25.8184, -23.9137, 0, 0, 0, 0, 0, 0, 0, 26.6649, -28.7811, 0, 0, 0, 0, 0, 0, 0, 27.1939, -33.7544, 0, 0, 0, 0, 0, 0, 0, 26.5591, -39.1508, 0, 0, 0, 0, 0, 0, 0, 25.6068, -44.0182, 0, 0, 0, 0, 0, 0, 0, 22.7498, -49.0972, 0, 0, 0, 0, 0, 0, 0, 19.258, -53.8588, 0, 0, 0, 0, 0, 0, 0, 13.8615, -57.8797, 0, 0, 0, 0, 0, 0, 0, 8.35923, -60.8425, 0, 0, 0, 0, 0, 0, 0, 2.64533, -62.7471, 0, 0, 0, 0, 0, 0, 0, 0.105814, -63.0646 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
 [sub_resource type="SphereMesh" id=2]
@@ -13,68 +14,73 @@ radius = 2.0
 height = 4.0
 
 [node name="JumpPath" type="Path"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.2734, -67.9236 )
 curve = SubResource( 1 )
 script = ExtResource( 1 )
 OFFSET_LENGTH = 1.0
 
 [node name="PathFollow1" type="PathFollow" parent="."]
-transform = Transform( 1, 0, 0, 0, -0.0889143, 0.996039, 0, -0.996039, -0.0889143, 0, -16.2788, 67.5109 )
+transform = Transform( 1, 0, 0, 0, -0.635269, 0.77229, 0, -0.77229, -0.635269, 0, 0.423253, -9.09495e-13 )
 
 [node name="MeshInstance" type="MeshInstance" parent="PathFollow1"]
 mesh = SubResource( 2 )
 material/0 = null
 
 [node name="PathFollow2" type="PathFollow" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.979624, 0.200842, 0, -0.200842, 0.979624, 0, -16.2788, 67.5109 )
+transform = Transform( 1, 0, 0, 0, 0.928941, -0.370228, 0, 0.370228, 0.928941, 0, 0.423253, -9.09495e-13 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="PathFollow2"]
 transform = Transform( 1, 0, 0, 0, 0.112944, 0.9936, 0, -0.9936, 0.112944, 0, 0, 0 )
+visible = false
 mesh = SubResource( 2 )
 material/0 = null
 
 [node name="PathFollow3" type="PathFollow" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.979624, 0.200842, 0, -0.200842, 0.979624, 0, -16.2788, 67.5109 )
+transform = Transform( 1, 0, 0, 0, 0.971912, 0.235345, 0, -0.235345, 0.971912, 0, 0.423253, -9.09495e-13 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="PathFollow3"]
 transform = Transform( 1, 0, 0, 0, 0.112944, 0.9936, 0, -0.9936, 0.112944, 0, 0, 0 )
+visible = false
 mesh = SubResource( 2 )
 material/0 = null
 
 [node name="PathFollow4" type="PathFollow" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.979624, 0.200842, 0, -0.200842, 0.979624, 0, -16.2788, 67.5109 )
+transform = Transform( 1, 0, 0, 0, 0.876456, 0.481483, 0, -0.481483, 0.876456, 0, 0.423253, -9.09495e-13 )
 
 [node name="MeshInstance4" type="MeshInstance" parent="PathFollow4"]
 transform = Transform( 1, 0, 0, 0, 0.112944, 0.9936, 0, -0.9936, 0.112944, 0, 0, 0 )
+visible = false
 mesh = SubResource( 2 )
 material/0 = null
 
 [node name="PathFollow5" type="PathFollow" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.931158, 0.364613, 0, -0.364613, 0.931158, 0, -16.2788, 67.5109 )
+transform = Transform( 1, 0, 0, 0, 0.820195, 0.572082, 0, -0.572082, 0.820195, 0, 0.423253, -9.09495e-13 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="PathFollow5"]
 transform = Transform( 1, 0, 0, 0, 0.999996, 0.00243445, 0, -0.00243445, 0.999996, 0, 0, 0 )
+visible = false
 mesh = SubResource( 2 )
 material/0 = null
 
 [node name="PathFollow6" type="PathFollow" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.979624, 0.200842, 0, -0.200842, 0.979624, 0, -16.2788, 67.5109 )
+transform = Transform( 1, 0, 0, 0, 0.849709, 0.527252, 0, -0.527252, 0.849709, 0, 0.423253, -9.09495e-13 )
 
 [node name="MeshInstance5" type="MeshInstance" parent="PathFollow6"]
 transform = Transform( 1, 0, 0, 0, 0.112944, 0.9936, 0, -0.9936, 0.112944, 0, 0, 0 )
+visible = false
 mesh = SubResource( 2 )
 material/0 = null
 
 [node name="PathFollow7" type="PathFollow" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.979624, 0.200842, 0, -0.200842, 0.979624, 0, -16.2788, 67.5109 )
+transform = Transform( 1, 0, 0, 0, 0.716488, 0.6976, 0, -0.6976, 0.716488, 0, 0.423253, -9.09495e-13 )
 
 [node name="MeshInstance6" type="MeshInstance" parent="PathFollow7"]
 transform = Transform( 1, 0, 0, 0, 0.112944, 0.9936, 0, -0.9936, 0.112944, 0, 0, 0 )
+visible = false
 mesh = SubResource( 2 )
 material/0 = null
 
 [node name="PathFollow8" type="PathFollow" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.967105, 0.254381, 0, -0.254381, 0.967105, 0, -16.2788, 67.5109 )
+transform = Transform( 1, 0, 0, 0, 0.8685, 0.495691, 0, -0.495691, 0.8685, 0, 0.423253, -9.09495e-13 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="PathFollow8"]
 transform = Transform( 1, 0, 0, 0, 0.999996, 0.00243446, 0, -0.00243446, 0.999996, 0, 0, 0 )

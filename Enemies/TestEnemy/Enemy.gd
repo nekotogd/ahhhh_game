@@ -72,7 +72,7 @@ func _on_ShootTimer_timeout():
 	if raycast.is_colliding():
 		var hit = raycast.get_collider()
 		if hit.is_in_group("Player"):
-			raycast.get_collider().health -= damage
+			hit.health -= damage
 
 func _physics_process(delta):
 	match state:

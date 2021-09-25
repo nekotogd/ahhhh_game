@@ -15,42 +15,45 @@ collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="CollisionBone1" type="CollisionShape" parent="."]
-transform = Transform( 1.14863e-14, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, 2.11758e-20, 2.62775e-07, -6.0116, -2.62775e-07, 0, 0, 30.028 )
+transform = Transform( 1.14863e-14, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, 2.31344e-20, 2.62775e-07, -6.0116, -2.62775e-07, 0, 0, 28.1709 )
 shape = SubResource( 1 )
 
 [node name="CollisionBone2" type="CollisionShape" parent="."]
-transform = Transform( 1.14863e-14, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, 2.11758e-20, 2.62775e-07, -6.0116, -2.62775e-07, -2.09931e-07, -2.09931e-07, 25.2253 )
+transform = Transform( 1.14863e-14, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, 2.31344e-20, 2.62775e-07, -6.0116, -2.62775e-07, -2.09931e-07, -2.09931e-07, 23.3682 )
 shape = SubResource( 1 )
 
 [node name="CollisionBone3" type="CollisionShape" parent="."]
-transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -3.68181e-07, -3.68181e-07, 21.605 )
+transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -3.68181e-07, -3.68181e-07, 19.7479 )
 shape = SubResource( 1 )
 
 [node name="CollisionBone4" type="CollisionShape" parent="."]
-transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -5.36071e-07, -5.36071e-07, 17.7641 )
+transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -5.36071e-07, -5.36071e-07, 15.907 )
 shape = SubResource( 1 )
 
 [node name="CollisionBone5" type="CollisionShape" parent="."]
-transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -6.9618e-07, -6.9618e-07, 14.1013 )
+transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -6.9618e-07, -6.9618e-07, 12.2442 )
 shape = SubResource( 1 )
 
 [node name="CollisionBone6" type="CollisionShape" parent="."]
-transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -8.65515e-07, -8.65515e-07, 10.2273 )
+transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -8.65515e-07, -8.65515e-07, 8.37024 )
 shape = SubResource( 1 )
 
 [node name="CollisionBone7" type="CollisionShape" parent="."]
-transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -9.79742e-07, -9.79742e-07, 7.61411 )
+transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -9.79742e-07, -9.79742e-07, 5.75701 )
 shape = SubResource( 1 )
 
 [node name="CollisionBone8" type="CollisionShape" parent="."]
-transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -1.22937e-06, -1.22937e-06, 1.90336 )
+transform = Transform( -1.43328e-06, -2.62775e-07, 6.0116, -6.0116, -2.62775e-07, -1.43328e-06, 2.62775e-07, -6.0116, -2.62775e-07, -1.22937e-06, -1.22937e-06, 0.0462589 )
 shape = SubResource( 1 )
 
 [node name="SandWormModel" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 30.028 )
+transform = Transform( 1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 28.1709 )
 
 [node name="Armature" parent="SandWormModel" index="0"]
 transform = Transform( 6.0116, 0, 0, 0, 6.0116, 0, 0, 0, 6.0116, 0, 0, 0 )
+
+[node name="Skeleton" parent="SandWormModel/Armature" index="0"]
+transform = Transform( 1, -1.06581e-14, -4.23516e-22, 1.06581e-14, 1, -1.06581e-14, -2.11758e-22, 1.06581e-14, 1, 0, 0, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SandWormModel/Armature/Skeleton" index="1"]
 anims/UndergroundSwim = SubResource( 2 )
@@ -125,5 +128,12 @@ bone_name = "Bone.008"
 [node name="RemoteTransform" type="RemoteTransform" parent="SandWormModel/Armature/Skeleton/BoneAttachment"]
 remote_path = NodePath("../../../../../CollisionBone8")
 update_scale = false
+
+[node name="SkeletonIK" type="SkeletonIK" parent="SandWormModel/Armature/Skeleton" index="11"]
+process_priority = 1
+root_bone = "Bone"
+tip_bone = "Bone.008"
+
+[node name="StateTimer" type="Timer" parent="."]
 
 [editable path="SandWormModel"]

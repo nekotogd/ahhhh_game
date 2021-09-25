@@ -18,40 +18,44 @@ emission_energy = 1.64
 emission_operator = 0
 emission_on_uv2 = false
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
 [sub_resource type="Curve" id=4]
-_data = [ Vector2( 0, 0.881818 ), 0.0, 1.48417, 0, 0, Vector2( 1, 0.409091 ), 0.0502479, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0.881818 ), 0.0, 1.48417, 0, 0, Vector2( 1, 0.745454 ), 0.0502479, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=5]
 curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticlesMaterial" id=6]
 emission_shape = 1
-emission_sphere_radius = 3.0
-spread = 180.0
-gravity = Vector3( 0, -1, 0 )
-initial_velocity = 2.0
+emission_sphere_radius = 7.46
+direction = Vector3( 0, 1, 0 )
+initial_velocity = 10.0
+angular_velocity = 167.44
+angular_velocity_random = 1.0
+radial_accel = 20.93
+angle = 720.0
+angle_random = 1.0
 scale = 11.85
 scale_curve = SubResource( 5 )
-color_ramp = SubResource( 7 )
+color_ramp = SubResource( 3 )
 
-[sub_resource type="QuadMesh" id=2]
+[sub_resource type="QuadMesh" id=7]
 
 [node name="SandwormDustParticles" type="Particles"]
 material_override = SubResource( 1 )
 cast_shadow = 0
 emitting = false
+amount = 32
 one_shot = true
-speed_scale = 0.2
 explosiveness = 0.87
 local_coords = false
-process_material = SubResource( 3 )
-draw_pass_1 = SubResource( 2 )
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 7 )
 script = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]

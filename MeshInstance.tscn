@@ -138,6 +138,7 @@ material/1 = SubResource( 3 )
 shape = SubResource( 4 )
 
 [node name="Main character controller" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.39443, 106.262 )
 
 [node name="RUINS" type="Spatial" parent="."]
 

@@ -4,7 +4,7 @@
 [ext_resource path="res://damageoverlaydownres.png" type="Texture" id=2]
 [ext_resource path="res://PS1-shaders-for-godot-main/psx.shader" type="Shader" id=3]
 [ext_resource path="res://TexturesCom_Various0217_1_S.jpg" type="Texture" id=4]
-[ext_resource path="res://Main character controller.gd" type="Script" id=5]
+[ext_resource path="res://Player/Main character controller.gd" type="Script" id=5]
 [ext_resource path="res://shotgun.obj" type="ArrayMesh" id=6]
 
 [sub_resource type="CapsuleMesh" id=161]

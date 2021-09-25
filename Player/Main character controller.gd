@@ -69,6 +69,7 @@ func fire_shotgun():
 			for body in bodies_arr:
 				if body.is_in_group("Enemy"):
 					body.health -= damage
+					break
 			return
 
 func old_fire():
@@ -88,6 +89,7 @@ func _process(delta):
 	hand.global_transform.origin = handloc.global_transform.origin
 	hand.rotation.y = lerp_angle(hand.rotation.y, rotation.y, SWAY * delta)
 	hand.rotation.x = lerp_angle(hand.rotation.x, head.rotation.x, VSWAY * delta)
+	hand.rotation.z = 0
 	
 	if direction == Vector3.ZERO:
 		$AnimationPlayer.play("Idle")
@@ -95,7 +97,6 @@ func _process(delta):
 		$AnimationPlayer.play("Headbob")
 
 func _physics_process(delta):
-	
 	direction = Vector3()
 	
 	if ground_check.is_colliding():
